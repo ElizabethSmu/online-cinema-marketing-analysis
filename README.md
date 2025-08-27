@@ -9,10 +9,15 @@ Note: Comments and outputs in the Jupyter notebooks are in Russian.
 ## Project structure
 
 *Data Loading.ipynb* - notebook with loading all datasets and combining data into a resulting dataset.
+
 *Data preparation and traffic quality analysis.ipynb* - сorrecting data errors, analyzing the number of users at different stages of the funnel and checking traffic quality.
+
 *Сorrelation analysis.ipynb* - сorrelation analysis of features of a cleaned dataset (without fraudulent traffic).
+
 *Visualization.ipynb* - notebook with diagram of distribution of operating systems of users for each advertising channel, diagrams of costs for each advertising channel and profit from them, visualization of the sales funnel across all advertising channels.
+
 *Testing hypotheses.ipynb* - testing hypotheses and redistributing the budget across advertising channels.
+
 *images/* — folder with visualizations used in the notebooks and README 
 
 
@@ -27,15 +32,16 @@ Note: Comments and outputs in the Jupyter notebooks are in Russian.
 
 The data in this project was collected from various sources.
 The datasets for seven different advertising channels (banner, video, native, partner_network, rich, search, organic_traffic) contain the following attributes:
-*user_id* — unique user identifier;
-*funnel_stage* — funnel stage (interest, consideration, intent, purchase);
-*timestamp* — time of the user’s action;
-*profit* — profit at the purchase stage; in all other cases marked as None;
-*os* — operating system of the user’s device.
+
+- user_id — unique user identifier;
+- funnel_stage — funnel stage (interest, consideration, intent, purchase);
+- timestamp — time of the user’s action;
+- profit — profit at the purchase stage; in all other cases marked as None;
+- os — operating system of the user’s device.
 
 The dataset with advertising costs by channels contains:
-*ad_channel* — advertising channel name;
-*price* — advertising cost.
+- ad_channel — advertising channel name;
+- price — advertising cost.
 
 
 ## Steps in the project
@@ -46,8 +52,11 @@ The data on advertising channels was provided in CSV and Excel files.
 The data on advertising costs was presented in a JSON file.
 After loading and saving each as a DataFrame, the DataFrames with advertising channels were concatenated into a single DataFrame, which was then supplemented with the price attribute according to the corresponding channel.
 The resulting DataFrame was sorted by timestamp and contains 4228781 rows and 7 columns with the following data types:
+
 *ad_channel, funnel_stage, os* — object;
+
 *user_id, timestamp* — int;
+
 *price, profit* — float.
 
 ### Data preparation
@@ -110,8 +119,11 @@ Based on the test results, the null hypothesis cannot be accepted, as the p-valu
 ## Results
 
 Fraudulent traffic accounted for 76.84% of data.
+
 Identified video, native, and rich channels as unprofitable.
+
 Suggested budget reallocation: rich → banner, native → partner_network.
+
 Hypothesis testing confirmed that organic traffic differs from paid traffic.
 
 
